@@ -6,7 +6,7 @@ import java.util.Map;
 import static td1.refractor.api.general.Restaurant.MeatSize.*;
 import static td1.refractor.api.general.Restaurant.Product_Type.*;
 
-public class Restaurant {
+public abstract class Restaurant {
     public static enum MeatSize {
         SMALL, AVERAGE, BIG
     }
@@ -45,8 +45,5 @@ public class Restaurant {
         return menus.get(MenuType.OWN_STYLE_MENU).addProduct(new Meat(meatType,meatWeight.get(meatSize)));
     }
 
-    public Restaurant addMenu(MenuType menuType, Menu menu) {
-        menus.put(menuType, menu);
-        return this;
-    }
+    public abstract void setMenus();
 }
