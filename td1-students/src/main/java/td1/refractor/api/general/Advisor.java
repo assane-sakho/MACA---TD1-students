@@ -10,13 +10,14 @@ import static td1.refractor.api.general.Restaurant.Product_Type.*;
 import static td1.refractor.api.general.Sauce.SauceType.*;
 
 public class Advisor {
+    public static final Advisor INSTANCE = new Advisor();
     Map<RestaurantType, Restaurant> restaurantList;
 
     public static enum RestaurantType {
         CHEAP, EXPENSIVE;
     }
 
-    public Advisor() {
+    private Advisor() {
         restaurantList = new HashMap<RestaurantType, Restaurant>();
 
         Restaurant macDeau = new Restaurant(50, 100, 200, 40, 10, 10, 15);
@@ -72,6 +73,10 @@ public class Advisor {
         restaurantList.put(RestaurantType.EXPENSIVE, bigBurger);
     }
 
+    public static Advisor getInstance()
+    {
+        return INSTANCE;
+    }
     public Restaurant select(RestaurantType restaurantType) {
         return restaurantList.get(restaurantType);
     }

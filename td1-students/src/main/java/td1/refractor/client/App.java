@@ -13,7 +13,8 @@ import static td1.refractor.api.general.Sauce.SauceType.*;
 
 public class App {
     public static void main(String args[]) {
-        Advisor advisor = new Advisor();
+        Advisor advisor = Advisor.getInstance();
+
         Burger alice_dinner = advisor // appel au conseiller Burger de la ville
                 .select(CHEAP) // choix d'un restaurant pas cher
                 .order_menu(FISH_MENU) // menu poisson
